@@ -5,9 +5,10 @@ import pages.tShirtsPage;
 
 public class orderList {
     private tShirtsPage tShirtsPage = new tShirtsPage();
+    private static final String WEB_PAGE = "http://automationpractice.com/index.php";
 
     public void clickTShirts() {
-        browserPage.getDriver().get("http://automationpractice.com/index.php");
+        browserPage.getDriver().get(WEB_PAGE);
         tShirtsPage.tShirtsTab().click();
     }
 
@@ -17,32 +18,32 @@ public class orderList {
         tShirtsPage.proceedToCheckOut().click();
     }
 
-    public String validateSummaryPage(){
+    public String validateSummaryPage() {
         String summary = tShirtsPage.myOrderSummary().getText();
         return summary;
     }
 
-    public void loginToWebPage(String username, String password){
-        browserPage.getDriver().get("http://automationpractice.com/index.php");
+    public void loginToWebPage(String username, String password) {
+        browserPage.getDriver().get(WEB_PAGE);
         tShirtsPage.clickSignIn().click();
         tShirtsPage.emailId().sendKeys(username);
         tShirtsPage.password().sendKeys(password);
         tShirtsPage.signIn().click();
     }
 
-    public void changeMyName(String newName, String password){
+    public void changeMyName(String newName, String password) {
         tShirtsPage.myAccount().click();
         tShirtsPage.myPersonalInfo().click();
+        tShirtsPage.myFirstNameTextBox().clear();
         tShirtsPage.myFirstNameTextBox().sendKeys(newName);
         tShirtsPage.myOldPassword().sendKeys(password);
         tShirtsPage.buttonSave().click();
-        tShirtsPage.backToYourAccount();
+        tShirtsPage.backToYourAccount().click();
     }
 
-    public String verifyChangeOfName(){
-        tShirtsPage.myAccount().click();
+    public String verifyChangeOfName() {
         tShirtsPage.myPersonalInfo().click();
-        return tShirtsPage.myFirstNameTextBox().getText();
+        return tShirtsPage.myFirstNameTextBox().getAttribute("value");
 
     }
 }

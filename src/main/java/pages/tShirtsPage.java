@@ -69,7 +69,7 @@ public class tShirtsPage {
     }
 
     public WebElement backToYourAccount() {
-        return findElement(By.id("identity"));
+        return findElement(By.xpath("//a[@class='btn btn-default button button-small'][@href='http://automationpractice.com/index.php?controller=my-account']"));
     }
 
 }

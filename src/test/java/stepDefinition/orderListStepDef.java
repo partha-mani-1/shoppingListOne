@@ -25,7 +25,7 @@ public class orderListStepDef {
 
     @Then("I verify the summary of order")
     public void iVerifyTheSummaryOfOrder() {
-        Assert.assertTrue(myOrderList.equalsIgnoreCase(orderList.validateSummaryPage()));
+        Assert.assertEquals(myOrderList, orderList.validateSummaryPage());
     }
 
 
@@ -43,6 +43,6 @@ public class orderListStepDef {
 
     @Then("My name should change successfully")
     public void myNameShouldChangeSuccessfully() {
-        Assert.assertTrue(orderList.verifyChangeOfName().equalsIgnoreCase(newName));
+        Assert.assertEquals(orderList.verifyChangeOfName(), newName);
     }
 }
